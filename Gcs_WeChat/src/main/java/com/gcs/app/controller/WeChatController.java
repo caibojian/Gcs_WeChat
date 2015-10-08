@@ -177,7 +177,7 @@ public class WeChatController {
 			read.setUserId(userId);
 			read.setCreateTime(new Date());
 			read.setType("0");
-			//read.setUserPic(CpUtils.getWxUser(userId).getAvatar());
+			read.setUserPic(CpUtils.getWxUser(userId).getAvatar());
 			read.setPoliceID(user.getPoliceID());
 			read.setUserName(user.getName());
 			articleReaderService.save(read);
@@ -191,7 +191,7 @@ public class WeChatController {
 	}
 	
 	/**
-	 * 手机微信查看战线动态文章
+	 * 手机微信查看交管快讯文章
 	 * @param info
 	 * 			
 	 * @param files

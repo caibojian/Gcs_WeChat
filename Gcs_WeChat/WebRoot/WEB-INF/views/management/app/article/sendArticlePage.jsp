@@ -62,7 +62,7 @@
 <script type="text/javascript">
 	 
   		function submitForm(){
-  			var stemTxt=UM.getEditor('myEditor').getPlainTxt(); //取得纯文本  
+  			var stemTxt=UM.getEditor('myEditor').getContentTxt(); //取得纯文本  
   			$('#bak1').val(stemTxt);
   			var text = UM.getEditor('myEditor').getContent();
   			//$('#content').val(text);

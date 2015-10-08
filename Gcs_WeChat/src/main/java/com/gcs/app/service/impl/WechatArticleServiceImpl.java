@@ -129,6 +129,8 @@ public class WechatArticleServiceImpl extends
 		String sql1 = "select id,title,create_time,praise_amount,read_amount,author,bak1,comment_amount from wechat_cp_article where 1=1 and state=\"1\" and article_type="+articleType+" order by create_time DESC";
 		String sql2 = "select count(*) from wechat_cp_article where 1=1 and state=\"1\" and article_type="+articleType+" ";
 
+		System.out.println(sql1);
+		
 		Query query = em.createNativeQuery(sql1.toString());
 		query.setFirstResult(pp.getStart());
 		query.setMaxResults(pp.getRows());
