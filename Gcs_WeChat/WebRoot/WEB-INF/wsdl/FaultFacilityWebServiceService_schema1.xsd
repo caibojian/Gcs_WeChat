@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webServices.gcs.com/" targetNamespace="http://webServices.gcs.com/" version="1.0">
+
+  <xs:element name="TransportationFacilities" type="tns:TransportationFacilities"/>
+
+  <xs:element name="TransportationFacilitiesResponse" type="tns:TransportationFacilitiesResponse"/>
+
+  <xs:complexType name="TransportationFacilities">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TransportationFacilitiesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

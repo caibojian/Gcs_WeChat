@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+   <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WeChatVoiceServlet</servlet-name>
+    <servlet-class>com.gcs.weixin.servlet.WeChatVoiceServlet</servlet-class>
+  </servlet>
+
+   <servlet>
+   	<description>
+   		JAX-WS endpoint - FaultFacilityWebServiceService
+   	</description>
+   	<display-name>FaultFacilityWebServiceService</display-name>
+   	<servlet-name>FaultFacilityWebServiceService</servlet-name>
+   	<servlet-class>
+   		com.sun.xml.ws.transport.http.servlet.WSServlet
+   	</servlet-class>
+   	<load-on-startup>1</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+   	<servlet-name>FaultFacilityWebServiceService</servlet-name>
+   	<url-pattern>/FaultFacilityWebServicePort</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>WeChatVoiceServlet</servlet-name>
+    <url-pattern>/WeChatVoiceServlet</url-pattern>
+  </servlet-mapping>
+  
+   
+   <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WeCharCoreServlet</servlet-name>
+    <servlet-class>com.gcs.weixin.servlet.WeCharCoreServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>WeCharCoreServlet</servlet-name>
+    <url-pattern>/wechatcore</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WxCpOAuth2Servlet</servlet-name>
+    <servlet-class>com.gcs.weixin.servlet.WxCpOAuth2Servlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>WxCpOAuth2Servlet</servlet-name>
+    <url-pattern>/OAuth2</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WeChatJSSDKServlet</servlet-name>
+    <servlet-class>com.gcs.weixin.servlet.WeChatJSSDKServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>WeChatJSSDKServlet</servlet-name>
+    <url-pattern>/JSSDKServlet</url-pattern>
+  </servlet-mapping>			
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+			classpath*:/applicationContext.xml,
+			classpath*:/applicationContext-shiro.xml,
+			classpath*:/captcha-context.xml
+		</param-value>
+  </context-param>
+  <context-param>
+    <param-name>spring.profiles.default</param-name>
+    <param-value>production</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.gcs.sysmgr.listener.SystemInitListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>openEntityManagerInViewFilter</filter-name>
+    <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>openEntityManagerInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>shiroFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>targetFilterLifecycle</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>shiroFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>springServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+    <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>Captcha</servlet-name>
+    <servlet-class>com.gcs.sysmgr.shiro.JcaptchaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Captcha</servlet-name>
+    <url-pattern>/Captcha.jpg</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>EncoderServlet</servlet-name>
+    <servlet-class>com.gcs.sysmgr.shiro.EncoderServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>EncoderServlet</servlet-name>
+    <url-pattern>/encoder.do</url-pattern>
+  </servlet-mapping>
+  
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/WEB-INF/views/error/500.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/views/error/500.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/views/error/404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/views/error/403.jsp</location>
+  </error-page>
+  
+  
+  <listener>
+  	<listener-class>
+  		com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+  	</listener-class>
+  </listener></web-app>

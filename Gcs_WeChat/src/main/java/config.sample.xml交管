@@ -1,0 +1,13 @@
+<xml>
+    <corpId>wx87bf7fb2bd3215a1</corpId>
+    <corpSecret>DFTNld6HNWB5BA5BxYr_qFEQYNC3CMYDYezZfhTXUx3YpzLLS_v1PGxMydbaK40i</corpSecret>
+    <agentId>2</agentId>
+    <token>kw4uvgObpXu6DXHz59jW7J1DGYQTO</token>
+    <aesKey>JE1ONKs3llAncxR3Kma949JTWYAZja9KpjZ0OokBaQ9</aesKey>
+    <accessToken></accessToken>
+    <expiresTime>111</expiresTime>
+    <userId>40289f814c7d4c68014c7d53e30c0001</userId>
+    <departmentId>2</departmentId>
+    <tagId></tagId>
+    <oauth2redirectUri>http://w.whjg.gov.cn:443/Gcs_WeChat/baiduMap.jsp</oauth2redirectUri>
+</xml>

@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/views/management/app/article/articleContent.jsp=UTF-8
+encoding//WebRoot/WEB-INF/views/management/app/article/articleListbyMoble.jsp=UTF-8
+encoding//src/main/java/com/gcs/sysmgr/shiro/EncoderServlet.java=UTF-8
+encoding/<project>=UTF-8

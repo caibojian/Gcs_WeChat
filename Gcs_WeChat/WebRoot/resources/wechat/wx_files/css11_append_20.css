@@ -1,0 +1,891 @@
+/*快速理赔记录样式 start*/
+.f-width-75 dt{
+	width: 75px !important;
+}
+.f-pd-70 dd {
+	padding-left: 70px !important;
+}
+.f-h-100 {
+	height: auto;
+}
+.f-h-100 a {
+	display: block;
+	height: 15px;
+	background: url(../images/bg_arrow_right.png) no-repeat right center;
+	background-size: 6px 14px;
+	font-size: 15px;
+	color: #328bd7;
+	margin: 25px auto;
+	width: 180px;
+}
+.kslp .bd .detail dt:first-child {
+    width: 300px !important;
+}
+.kslp .bd li .base dl dt {
+    width: 75px;
+}
+.kslp_a {
+	width: 160px !important;
+	margin: 30px auto;
+}
+/*快速理赔记录样式 end*/
+/*附件事故快速理赔点 start*/
+.cz_claims {
+	width: 100%;
+}
+.cz_claims .tel {
+	color: #399EEA;
+}
+.cz_claims li {
+	/*height: 38px;*/
+	padding: 14px 21px;
+	position: relative;
+	border-bottom: 1px solid #d5d8de;
+}
+.cz_claims li h3 {
+	line-height: 20px;
+	font-size: 15px;
+	font-weight: normal;
+}
+.cz_claims li .my_map_ico {
+	display: block;
+	background: url(../images/ico_fjlp.png) no-repeat;
+	background-size: 33px 33px;
+	width: 33px;
+	height: 33px;
+	position: absolute;
+	right: 21px;
+	top: 16px;
+}
+.address {
+	color: #328bd7;
+}
+/*附件事故快速理赔点 end*/
+/*快速理赔帮助 start*/
+.kslp_banner_bg {
+	height: 178px;
+	background: #fff;
+}
+.kslp_banner {
+	width: 320px;
+	height: 178px;
+	background: url(../images/bg_lp_babber_1.png) no-repeat top center;
+	margin: 0 auto;
+}
+.my_content_detail li {
+	border-bottom: 1px solid #D8D8D8;	
+}
+.my_content_detail .base {
+	position: relative;
+	padding: 14px 21px;
+}
+.kslp_content .title {
+	line-height: 34px;
+	text-indent: 50px;
+	font-size: 16px;
+}
+.kslp_content .icon {
+	width: 32px;
+	height: 32px;
+}
+.kslp_content .icon-1 {
+	background: url(../images/ico_lp_1.png) no-repeat;
+	background-size: 32px 32px;
+	position: absolute;
+}
+.kslp_content .icon-2 {
+	background: url(../images/ico_lp_2.png) no-repeat;
+	background-size: 32px 32px;
+	position: absolute;
+}
+.kslp_content .icon-3 {
+	background: url(../images/ico_lp_3.png) no-repeat;
+	background-size: 32px 32px;
+	position: absolute;
+}
+.kslp_content .icon-4 {
+	background: url(../images/ico_lp_4.png) no-repeat;
+	background-size: 32px 32px;
+	position: absolute;
+}
+.kslp_content .my_icon {
+	width: 20px;
+	height: 20px;
+	background: url("../images/down.png") no-repeat 0 0;
+	background-size: 20px 40px;
+	position: absolute;
+	right: 21px;
+	top: 20px;
+}
+.my_content_detail .base .up {
+	background: url("../images/down.png") no-repeat 0 -20px !important;
+	background-size: 20px 40px !important;
+}
+.my_content_detail .detail {
+	display: none;
+	background: #EDF0F7;
+	padding: 16px;
+}
+.kslp_content .detail p {
+	text-align: left;
+	line-height: 24px;
+	position: relative;
+}
+.kslp_content .detail .address {
+	width: 33px;
+    height: 33px;
+    position: absolute;
+    top: 0px;
+    right: 16px;
+    background: url("../images/ico_fjlp.png") no-repeat scroll;
+	background-size: 33px 33px;
+}
+.kslp_content .detail a {
+	color: #399eea;
+}
+.kslp_content img.my_pic {
+	width: 100%;
+	max-width: 640px;
+	margin: 0 auto;
+}
+/*快速理赔帮助 end*/
+/*违法代码查询 start*/
+.wfdm span {
+	color: #c4c2c2;
+}
+.wfdm .bd li .base dl dt {
+	width: 80px !important;
+}
+.wfdm .hd .sub {
+	margin-left: 0;
+}
+.wfdm_a {
+	width: 130!important;
+	margin-top: 220px;
+}
+.box input[type="password"]{
+    border: 1px solid #B7B7B7;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.18) inset;
+    color: #4B4B4B;
+    display: block;
+    font: 14px "华文细黑","黑体",helvetica,sans-serif;
+    outline: medium none;
+    padding: 10px 0;
+    text-indent: 8px;
+    width: 100%;
+}
+.wfdm_m {
+	border: 0;
+}
+.wfdm_m .hd {
+	position: relative;
+	background: none;
+	border-bottom: 1px solid #E6E6E6;
+}
+.wfdm_m .hd .sign {
+	width:           19px;
+	height:          19px;
+	background:      url(../images/button_arrow_down.png) no-repeat center center;
+	background-size: 19px 19px;
+	position:        absolute;
+	right:           5px;
+	top:             50%;
+	margin-top:      -10px;
+}
+.wfdm_m .hd .up {
+	background:      url(../images/button_arrow_up.png) no-repeat center center;
+	background-size: 19px 19px;
+}
+.wfdm_m .hd .sub {
+	float:         none;
+	padding-right: 25px;
+}
+.wfdm_m .bd {
+	background: #EDF0F7;
+}
+.wfdm .bd li .base dl dd {
+	margin-left: 15px !important;
+}
+.wfdm_m_a {
+	margin-top:    60px !important;
+	margin-bottom: 30px !important;
+}
+.on_border {
+	border-top: 2px solid #399EEA;
+}
+/*违法代码查询 end*/
+/*提交按钮 start*/
+.my_submit_btn{
+width:100%;
+margin:14px 0;
+height:35px;
+padding:0 1px;
+cursor:pointer;
+border:0;
+background: url("../images/btn_tijiao.png") no-repeat center 0px content-box,
+			url("../images/btn_tijiao.png") repeat left -39px content-box,
+			url("../images/btn_tijiao.png") no-repeat left -80px padding-box,
+			url("../images/btn_tijiao.png") no-repeat right -120px padding-box;  
+background-size: 30px 315px;
+}
+
+.my_submit_btn:active{
+background: url("../images/btn_tijiao.png") no-repeat center -161px content-box,
+			url("../images/btn_tijiao.png") repeat left -202px content-box,
+			url("../images/btn_tijiao.png") no-repeat left -241px padding-box,
+			url("../images/btn_tijiao.png") no-repeat right -280px padding-box; 
+background-size: 30px 315px;
+}
+/*罚款按钮*/
+.my_pay_money_btn{
+width:100%;
+margin:14px 0;
+height:35px;
+padding:0 1px;
+cursor:pointer;
+border:0;
+background: url("../images/btn_zhifu.png") no-repeat center 0px content-box,
+			url("../images/btn_zhifu.png") repeat left -45px content-box,
+			url("../images/btn_zhifu.png") no-repeat left -83px padding-box,
+			url("../images/btn_zhifu.png") no-repeat right -121px padding-box;  
+background-size: 30px 315px;
+}
+
+.my_pay_money_btn:active{
+background: url("../images/btn_zhifu.png") no-repeat center -158px content-box,
+			url("../images/btn_zhifu.png") repeat left -195px content-box,
+			url("../images/btn_zhifu.png") no-repeat left -232px padding-box,
+			url("../images/btn_zhifu.png") no-repeat right -270px padding-box; 
+background-size: 30px 315px;
+}
+/*提交按钮 end*/
+/*新导航样式 三栏目 start*/
+.new_top_nav {
+	/*border-top: 3px solid #399eea;*/
+	border:none;
+	border-bottom: 1px solid #dfdfdf;
+	padding: 9px 0;
+}
+.new_top_nav .my_button {
+	width: 282px;
+	height: 41px;
+	margin: 0 auto;
+}
+.new_top_nav .my_button a {
+	display: block;
+	text-align: center;
+	line-height: 41px;
+	font-size: 16px;
+	color: #000000;
+}
+.new_top_nav .my_button .left_button_dark a,
+.new_top_nav .my_button .centernew__button_dark a
+.new_top_nav .my_button .right_button_dark a {
+	color: #000000;
+}
+.new_top_nav .my_button .left_button, 
+.new_top_nav .my_button .right_button,
+.new_top_nav .my_button .center_button, 
+.new_top_nav .my_button a,
+.new_top_nav .my_button .left_button_dark,
+.new_top_nav .my_button .left_button_light,
+.new_top_nav .my_button .center_button_dark,
+.new_top_nav .my_button .center_button_light,
+.new_top_nav .my_button .right_button_dark,
+.new_top_nav .my_button .right_button_light
+{
+	width: 94px;
+	height: 41px;
+	float: left;
+}
+.new_top_nav .my_button .left_button_dark {
+	background: url("../images/btn_new_nav_left_dark.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .left_button_light {
+	background: url("../images/btn_new_nav_left_light.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .left_button_light:active {
+	background: url("../images/btn_new_nav_left_dark.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .right_button_dark {
+	background: url("../images/btn_new_nav_right_dark.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .right_button_light {
+	background: url("../images/btn_new_nav_right_light.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .right_button_light:active {
+	background: url("../images/btn_new_nav_right_dark.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .center_button_light {
+	background: url("../images/btn_new_nav_center_light.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .center_button_dark {
+	background: url("../images/btn_new_nav_center_dark.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .center_button_light:active {
+	background: url("../images/btn_new_nav_center_dark.png") no-repeat;
+	background-size: 94px 41px;
+}
+.new_top_nav .my_button .center_button_light,
+.new_top_nav .my_button .center_button_dark {
+	margin-left: -1px;
+}
+/*新导航样式 三栏目 end*/
+/*路况快照样式 start*/
+.road_detail li {
+	position: relative;
+	border-bottom: 1px solid #edf0f7;
+}
+.road_detail .base {
+	padding: 14px 21px;
+
+}
+.road_detail .arrow {
+	width: 20px;
+	height: 20px;
+	background: url("../images/down.png") no-repeat 0 0;
+	background-size: 20px 40px;
+	position: absolute;
+	left: 14px;
+	top: 14px;
+}
+.road_detail .up {
+	background: url("../images/down.png") no-repeat 0 -20px !important;
+	background-size: 20px 40px !important;
+}
+.road_detail .title {
+	text-indent: 22px;
+	line-height: 20px;
+}
+.road_detail .guanzhu{
+	position: absolute;
+	top: 12px;
+	right: 21px;
+	width: 51px;
+	height: 24px;
+	background: url(../images/btn_my_meet.png) no-repeat 0 0;
+	background-size: 65px 200px;
+}
+.road_detail .buguanzhu {
+	position: absolute;
+	top: 12px;
+	right: 21px;
+	width: 62px;
+	height: 24px;
+	background: url(../images/btn_my_meet.png) no-repeat 0 -79px;
+	background-size: 65px 200px;
+}
+.road_detail .buguanzhu:active {
+	background: url(../images/btn_my_meet.png) no-repeat 0 -114px;
+	background-size: 65px 200px;
+}
+.road_detail .guanzhu:active {
+	background: url(../images/btn_my_meet.png) no-repeat 0 -38px;
+	background-size: 65px 200px;
+}
+.road_detail .detail {
+	padding: 10px 14px;
+	background: #EDF0F7;
+	display: none;
+	position: relative;
+}
+.road_detail .detail .img, 
+.road_detail .detail .img img{
+	width: 100%;
+	max-width: 640px;
+	margin: 0 auto;
+}
+.road_detail .detail .comment {
+	margin-top: 6px;
+	line-height: 26px;
+}
+.road_detail .no_num {
+	width: 170px;
+}
+/*公章按钮 start*/
+.road_detail .detail .gongzhang {
+	width:    100px;
+	height:   100px;
+	position: absolute;
+	right:    10px;
+	bottom:   60px;
+	background:      url(../images/420170.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420102 {
+	background:      url(../images/420102.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420103 {
+	background:      url(../images/420103.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420104 {
+	background:      url(../images/420104.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420105 {
+	background:      url(../images/420105.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420106 {
+	background:      url(../images/420106.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420107 {
+	background:      url(../images/420107.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420108 {
+	background:      url(../images/420108.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420111 {
+	background:      url(../images/420111.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420112 {
+	background:      url(../images/420112.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420113 {
+	background:      url(../images/420113.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420114 {
+	background:      url(../images/420114.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420115 {
+	background:      url(../images/420115.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420116 {
+	background:      url(../images/420116.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420117 {
+	background:      url(../images/420117.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420118 {
+	background:      url(../images/420118.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420119 {
+	background:      url(../images/420119.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420122 {
+	background:      url(../images/420122.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420128 {
+	background:      url(../images/420128.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420129 {
+	background:      url(../images/420129.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420130 {
+	background:      url(../images/420130.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420132 {
+	background:      url(../images/420132.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420140 {
+	background:      url(../images/420140.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420141 {
+	background:      url(../images/420141.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420142 {
+	background:      url(../images/420142.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420170 {
+	background:      url(../images/420170.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+.gongzhang_420172 {
+	background:      url(../images/420172.png) no-repeat center center;
+	background-size: 100px 100px;
+}
+/*公章按钮 end*/
+.area_choose {
+	width: 100%;
+	height: 75px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	background: url("../images/title_bg.png") repeat-x scroll center bottom #FEFEFE;
+}
+.area_choose .area {
+	width: 80px;
+	height: 65px;
+	line-height: 65px;
+	float: left;
+	position: relative;
+	margin-right: -80px;
+}
+.area_choose .area_2 {
+	float: right;
+	width: 100%;
+}
+.area_choose .input_box {
+	margin-left: 80px;
+	margin-top: 12px;
+}
+.area_choose .mf {
+	margin-left: 0px !important;
+}
+.area_choose .input_box .zoom {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: url("../images/ico_zoom.png") no-repeat;
+	background-size: 20px 20px;
+	right: 14px;
+	top: 10px;
+}
+/*路况快照样式 end*/
+/*违法信息缴罚出来 start*/
+.wkxx .hd .sub {
+    margin-left: 0 !important;
+}
+.wkxx .bd li .base dl dt {
+    width: 80px !important;
+}
+.wkxx .color-yellow {
+	color: #ffa200;
+}
+.wkxx .bd li {
+    border-bottom: none !important;
+    background: #edf0f7;
+}
+.wkxx_content {
+	background: #edf0f7;
+	padding: 14px 21px;
+}
+.law_title {
+	text-align: center;
+	font-size: 16px;
+}
+.law_content {
+	line-height: 28px;
+}
+.wkxxdzb .detail .title {
+	text-align: center;
+	font-size: 16px;
+	line-height: 28px;
+	color: #d90000;
+}
+.wkxxdzb .chuli {
+	position: absolute;
+	top: 12px;
+	right: 21px;
+	width: 51px;
+	height: 24px;
+	background: url(../images/btn_chuli.png) no-repeat 0 0;
+	background-size: 51px 50px;
+}
+.wkxxdzb .chuli:active {
+	background: url(../images/btn_chuli.png) no-repeat 0 -26px;
+	background-size: 51px 50px;
+}
+.wkxxdzb .color-blue {
+	color: #328cd8;
+}
+.wkxxdzb .my_content, .wkxxdzb .my_content_foot{
+	text-align: left;
+	line-height: 28px;
+	font-size: 15px;
+}
+.wkxxdzb .my_content_foot {
+	color: #d90000;
+}
+/*违法信息缴罚出来 end*/
+/*我的违法缴罚 start*/
+.wdxfjf_content .img {
+	width: 78px;
+	height: 78px;
+	background: url(../images/bg_smail_tr.png) no-repeat;
+	background-size: 78px 78px;
+	margin: 50px auto 20px auto;
+}
+.wdxfjf_content .note {
+	width: 240px;
+	line-height: 24px;
+	margin: 0 auto;
+	color: #666;
+	font-size: 15px;
+	text-align: left;
+}
+.wdxfjf_content .color-black {
+	color: #000;
+}
+.wdwfjf_start {
+	margin-top: 10px;
+	padding: 0px 14px;
+	line-height: 24px;
+}
+.wdwfjf_start .color-red {
+	color:#d00000;
+}
+.wdwfjfff .hd {
+	position: relative !important;
+}
+.wdwfjfff .bd li {
+	position: relative !important;
+}
+.wdwfjfff .bd .base {
+	margin-left: 30px;
+}
+.wdwfjfff .bd .base .down {
+	position: absolute;
+	left: -15px;
+}
+.wdwfjfff .bd li .base dl dt {
+	width: 73px !important;
+}
+.my_pay {
+	position: relative !important;
+}
+.my_pay .my_meet {
+	width: 47px;
+	height: 47px;
+	background: url(../images/btn_my_pay.png) no-repeat;
+	background-size: 47px 47px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.wdwfjfff .chuli, .wdwfjfff .my_wenhao, .wdwfjfff .chuli1 {
+	position:        absolute;
+	top:             50%;
+	margin-top:      -12px;
+	right:           14px;
+	width:           51px;
+	height:          24px;
+}
+.wdwfjfff .chuli {
+	background:      url(../images/btn_chuli.png) no-repeat 0 0;
+	background-size: 51px 50px;
+}
+.wdwfjfff .chuli1 {
+	background:      url(../images/btn_chuli1.png) no-repeat 0 0;
+	background-size: 51px 25px;
+}
+.wdwfjfff.chuli:active {
+	background: url(../images/btn_chuli.png) no-repeat 0 -26px;
+	background-size: 51px 50px;
+}
+.wdwfjfff .my_wenhao {
+	background:      url(../images/btn_wenhao.png) no-repeat 0 0;
+	background-size: 51px 25px;
+}
+.wkxxcf_content .img {
+	width: 78px;
+	height: 78px;
+	background: url(../images/bg_smail_tr.png) no-repeat;
+	background-size: 78px 78px;
+	margin: 50px auto 20px auto;
+}
+.wkxxcf_content .note {
+	width: 240px;
+	line-height: 24px;
+	margin: 0 auto;
+	color: #666;
+	font-size: 15px;
+	text-align: left;
+}
+.wkxxcf_content .no_num {
+	width: 170px;
+}
+/*我的违法缴罚 end*/
+/*同意按钮 start*/
+.my_agree_btn{
+width:100%;
+margin:14px 0;
+height:35px;
+padding:0 1px;
+cursor:pointer;
+border:0;
+background: url("../images/btn_tongyi.png") no-repeat center 0px content-box,
+			url("../images/btn_tongyi.png") repeat left -39px content-box,
+			url("../images/btn_tongyi.png") no-repeat left -78px padding-box,
+			url("../images/btn_tongyi.png") no-repeat right -116px padding-box;  
+background-size: 30px 315px;
+}
+
+.my_agree_btn:active{
+background: url("../images/btn_tongyi.png") no-repeat center -155px content-box,
+			url("../images/btn_tongyi.png") repeat left -194px content-box,
+			url("../images/btn_tongyi.png") no-repeat left -231px padding-box,
+			url("../images/btn_tongyi.png") no-repeat right -268px padding-box; 
+background-size: 30px 315px;
+}
+/*同意按钮 end*/
+/*确认支付样式 start*/
+.qrzf_btn {
+width:100%;
+margin:14px 0;
+height:35px;
+padding:0 1px;
+cursor:pointer;
+border:0;
+background: url("../images/btn_qrzf.png") no-repeat center 0px content-box,
+			url("../images/btn_qrzf.png") repeat left -40px content-box,
+			url("../images/btn_qrzf.png") no-repeat left -81px padding-box,
+			url("../images/btn_qrzf.png") no-repeat right -119px padding-box;  
+background-size: 72px 315px;	
+}
+.qrzf_btn:active{
+background: url("../images/btn_qrzf.png") no-repeat center -158px content-box,
+			url("../images/btn_qrzf.png") repeat left -200px content-box,
+			url("../images/btn_qrzf.png") no-repeat left -240px padding-box,
+			url("../images/btn_qrzf.png") no-repeat right -280px padding-box; 
+background-size: 72px 315px;
+}
+/*确认支付样式 end*/
+/*问号样式 start*/
+.wenhao {
+	width: 15px;
+	height: 15px;
+	background:url("../images/sign1.png") no-repeat center center;
+	background-size: 15px 15px;
+	display: block;
+	position: absolute;
+	top: 102px;
+	left: 125px;
+	cursor: pointer;
+}
+.wenhao_box {
+	width: 240px;
+	padding: 10px;
+	height: 196px;
+	background: rgba(0, 0, 0, 0.75);
+	position: fixed;
+	margin-top: -198px;
+	margin-left: -120px;
+	top: 50%;
+	left: 50%;
+	display: none;
+}
+.wenhao_box .content {
+	color: white;
+	line-height: 28px;
+}
+.wenhao_box .close {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 0;
+	background: url("../images/close.png") no-repeat;
+	background-size: 30px 30px;
+}
+/*问号样式 end*/
+/*附近理赔点地图样式 start*/
+.map_box {
+	position: relative;
+	width: 100%;
+}
+#js_jiejing {
+	width: 225px;
+	height: 55px;
+	padding: 5px;
+	background: #fff;
+	margin-left: auto;
+	margin-right: auto;
+}
+.my_address {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 172px;
+}
+.my_address .top_pattern {
+	border-top: 3px solid #399eea;
+	height: 88px;
+	background: #fefefe;
+    -moz-box-shadow: 0px 0px 15px #c3c6cb;
+    -webkit-box-shadow: 0px 0px 15px #c3c6cb;
+    box-shadow: 0px 0px 15px #c3c6cb;
+    position: relative;
+    z-index: 100;
+    top: 0px;
+}
+.my_address .top_pattern .cz_address {
+	height: 92px;
+	position: relative;
+}
+.my_address .top_pattern .cz_address .ico_address {
+	display: block;
+	width: 32px;
+	height: 32px;
+	background: url(../images/ico_address.png) no-repeat;
+	background-size: 32px 32px;
+	position: absolute;
+	right: 21px;
+	top: 15px;
+	line-height: 50px;
+	text-align: center;
+	color: #fff;
+}
+.my_address .top_pattern .cz_address .content {
+	margin-left: 21px;
+	line-height: 30px;
+	text-align: left;
+}
+.rotate_180 {
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+}
+.my_address .bottom_pattern {
+	height: 82px;
+	padding-top: 6px;
+	background: #edf0f7;
+}
+.my_address .angle_top {
+	height: 16px;
+	background: url(../images/angle_top.png) no-repeat center center;
+	background-size: 12px 6px;
+}
+/*附近理赔点地图样式 end*/
+/*提交按钮 start*/
+.bind_btn{
+width:100%;
+margin:14px 0;
+height:35px;
+padding:0 1px;
+cursor:pointer;
+border:0;
+background: url("../images/btn_ljbd.png") no-repeat center 0 content-box,
+			url("../images/btn_ljbd.png") repeat left -38px content-box,
+			url("../images/btn_ljbd.png") no-repeat left -80px padding-box,
+			url("../images/btn_ljbd.png") no-repeat right -121px padding-box;
+background-size: 59px 315px;
+}
+
+.bind_btn:active{
+background: url("../images/btn_ljbd.png") no-repeat center -161px content-box,
+			url("../images/btn_ljbd.png") repeat left -201px content-box,
+			url("../images/btn_ljbd.png") no-repeat left -240px padding-box,
+			url("../images/btn_ljbd.png") no-repeat right -280px padding-box;
+background-size: 59px 315px;
+}
+/*提交按钮 end*/
