@@ -32,9 +32,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.gcs.app.controller.ftp.Ftpfile;
-import com.gcs.app.controller.ftp.Md5;
-import com.gcs.app.controller.ftp.Txtfile;
 import com.gcs.app.entity.WechatArticle;
 import com.gcs.app.entity.WechatArticleReader;
 import com.gcs.app.entity.WechatUser;
@@ -610,214 +607,214 @@ public class WeChatController {
 		return WXQYVIOINDEX;
 	}
 	
-
-	
-	/**
-	 * 执行违章查询业务
-	*/
-	@RequestMapping(value = "/clwzData", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public Object clwzData(HttpServletRequest request, HttpServletResponse response,String cphm,String car,String type){
-		System.out.println("------"+cphm);
-		System.out.println("------"+car);
-		System.out.println("------"+type);
-		String json = "";
-		String fileName = "";
-		final String ip = PropertiesLoad.getPValue("ip", "ftpupload.properties");
-		final int port = Integer.parseInt(PropertiesLoad.getPValue("port", "ftpupload.properties"));
-		final String username = PropertiesLoad.getPValue("username", "ftpupload.properties");
-		final String password = PropertiesLoad.getPValue("password", "ftpupload.properties");
-		final String remotePathA = PropertiesLoad.getPValue("remotePathA", "ftpupload.properties");
-		final String remotePathD = PropertiesLoad.getPValue("remotePathD", "ftpupload.properties");
-		final String localpath = PropertiesLoad.getPValue("localpath", "ftpupload.properties");
-		if(cphm != null && car !=null){
-			json = "{'type':'"+type+"','hphm':'"+cphm+"','hpzl':'"+car+"'}";
-		}
-		if(StringUtils.isNotBlank(cphm)){
-			fileName = "query"+Md5.getMd5(cphm) +".txt";
-		}
-		
-		InputStream input = null;
-		try {
-			input = new ByteArrayInputStream(json.getBytes("utf-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 
-		//上传到FTP
-        boolean flag = Ftpfile.uploadFile(ip, port, username, password, remotePathA, fileName, input); 
-        
-      //===============================读取返回的文件====================================
-        long time = System.currentTimeMillis();
-        if(flag){
-        	boolean a = false;
-        	while(!a){
-        		//校检文件是否存在在下载返回结果文件到本地
-        		boolean b = Ftpfile.isFile(ip, port, username, password, remotePathD, "result"+Md5.getMd5(cphm)+".txt");
-                	if(b){
-                		Ftpfile.downFile(ip, port, username, password, remotePathA, "result"+Md5.getMd5(cphm)+".txt", localpath);
-                		File file = new File(localpath+"result"+Md5.getMd5(cphm)+".txt");
-                		String resultText =  Txtfile.readTxtFile(file);
-                		request.getSession().setAttribute("result", resultText);//返回的查询结果
-                		System.out.println("---------------------"+resultText);
-                		a = true;
-                	}else{
-                		a =	false;	
-                	}
-                	long time1 = System.currentTimeMillis();
-					if(time1-time > 130000){
-                		a = true;
-                	}
-        		System.out.println("正在下载"+a);
-        		
-        		if(a) break;
-        	}
-
-        }else{
-        	System.out.println("获取文档出现错误");
-        }
-        
-		return CLWZDATA;
-	}
-	
-	/**
-	 * 执行车辆信息查询业务
-	*/
-	@RequestMapping(value = "/clData", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public Object clData(HttpServletRequest request, HttpServletResponse response,String cphm,String car,String type){
-		System.out.println("------"+cphm);
-		System.out.println("------"+car);
-		System.out.println("------"+type);
-		String json = "";
-		String fileName = "";
-		final String ip = PropertiesLoad.getPValue("ip", "ftpupload.properties");
-		final int port = Integer.parseInt(PropertiesLoad.getPValue("port", "ftpupload.properties"));
-		final String username = PropertiesLoad.getPValue("username", "ftpupload.properties");
-		final String password = PropertiesLoad.getPValue("password", "ftpupload.properties");
-		final String remotePathA = PropertiesLoad.getPValue("remotePathA", "ftpupload.properties");
-		final String remotePathD = PropertiesLoad.getPValue("remotePathD", "ftpupload.properties");
-		final String localpath = PropertiesLoad.getPValue("localpath", "ftpupload.properties");
-		if(cphm != null && car !=null){
-			json = "{'type':'"+type+"','hphm':'"+cphm+"','hpzl':'"+car+"'}";
-		}
-		if(StringUtils.isNotBlank(cphm)){
-			fileName = "query"+Md5.getMd5(cphm) +".txt";
-		}
-		InputStream input = null;
-		try {
-			input = new ByteArrayInputStream(json.getBytes("utf-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 
-		//上传到FTP
-        boolean flag = Ftpfile.uploadFile(ip, port, username, password, remotePathA, fileName, input); 
-        
-      //===============================读取返回的文件====================================
-        long time = System.currentTimeMillis();
-        if(flag){
-        	boolean a = false;
-        	while(!a){
-        		//校检文件是否存在在下载返回结果文件到本地
-        		boolean b = Ftpfile.isFile(ip, port, username, password, remotePathD, "result"+Md5.getMd5(cphm)+".txt");
-                	if(b){
-                		Ftpfile.downFile(ip, port, username, password, remotePathA, "result"+Md5.getMd5(cphm)+".txt", localpath);
-                		File file = new File(localpath+"result"+Md5.getMd5(cphm)+".txt");
-                		String resultText =  Txtfile.readTxtFile(file);
-                		request.getSession().setAttribute("result", resultText);//返回的查询结果
-                		System.out.println("---------------------"+resultText);
-                		a = true;
-                	}else{
-                		a =	false;	
-                	}
-                	long time1 = System.currentTimeMillis();
-					if(time1-time > 130000){
-                		a = true;
-                	}
-        		System.out.println("正在下载"+a);
-        		
-        		if(a) break;
-        	}
-
-        }else{
-        	System.out.println("获取文档出现错误");
-        }
-        
-		return CLDATA;
-	}
-	
-	/**
-	 * 驾驶员查询业务
-	*/
-	@RequestMapping(value = "/drvData", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public Object drvData(HttpServletRequest request, HttpServletResponse response,String sfzhm,String type){
-		String json = "";
-		String fileName = "";
-		final String ip = PropertiesLoad.getPValue("ip", "ftpupload.properties");
-		final int port = Integer.parseInt(PropertiesLoad.getPValue("port", "ftpupload.properties"));
-		final String username = PropertiesLoad.getPValue("username", "ftpupload.properties");
-		final String password = PropertiesLoad.getPValue("password", "ftpupload.properties");
-		final String remotePathA = PropertiesLoad.getPValue("remotePathA", "ftpupload.properties");
-		final String remotePathD = PropertiesLoad.getPValue("remotePathD", "ftpupload.properties");
-		final String localpath = PropertiesLoad.getPValue("localpath", "ftpupload.properties");
-		if(sfzhm != null){
-			json = "{'type':'"+type+"','sfzhm':'"+sfzhm+"'}";
-		}
-		if(StringUtils.isNotBlank(sfzhm)){
-			fileName = "query"+Md5.getMd5(sfzhm) +".txt";
-		}
-		InputStream input = null;
-		try {
-			input = new ByteArrayInputStream(json.getBytes("utf-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 
-		//上传到FTP
-        boolean flag = Ftpfile.uploadFile(ip, port, username, password, remotePathA, fileName, input); 
-        
-      //===============================读取返回的文件====================================
-        long time = System.currentTimeMillis();
-        if(flag){
-        	boolean a = false;
-        	while(!a){
-        		//校检文件是否存在在下载返回结果文件到本地
-        		boolean b = Ftpfile.isFile(ip, port, username, password, remotePathD, "result"+Md5.getMd5(sfzhm)+".txt");
-                	if(b){
-                		Ftpfile.downFile(ip, port, username, password, remotePathA, "result"+Md5.getMd5(sfzhm)+".txt", localpath);
-                		File file = new File(localpath+"result"+Md5.getMd5(sfzhm)+".txt");
-                		String resultText =  Txtfile.readTxtFile(file);
-                		request.getSession().setAttribute("result", resultText);//返回的查询结果
-                		System.out.println("---------------------"+resultText);
-                		a = true;
-                	}else{
-                		a =	false;	
-                	}
-                	long time1 = System.currentTimeMillis();
-					if(time1-time > 130000){
-                		a = true;
-                	}
-        		System.out.println("正在下载"+a);
-        		
-        		if(a) break;
-        	}
-
-        }else{
-        	System.out.println("获取文档出现错误");
-        }
-        
-		return DRVDATA;
-	}
-	
-	
-	/**
-	 * 跳转到微信车辆违章查询页面
-	 * 
-	*/
-	@RequestMapping(value = "/test", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public Object test(HttpServletRequest request, HttpServletResponse response){
-		
-		return TEST;
-	}
+//
+//	
+//	/**
+//	 * 执行违章查询业务
+//	*/
+//	@RequestMapping(value = "/clwzData", method = { RequestMethod.GET,
+//			RequestMethod.POST })
+//	public Object clwzData(HttpServletRequest request, HttpServletResponse response,String cphm,String car,String type){
+//		System.out.println("------"+cphm);
+//		System.out.println("------"+car);
+//		System.out.println("------"+type);
+//		String json = "";
+//		String fileName = "";
+//		final String ip = PropertiesLoad.getPValue("ip", "ftpupload.properties");
+//		final int port = Integer.parseInt(PropertiesLoad.getPValue("port", "ftpupload.properties"));
+//		final String username = PropertiesLoad.getPValue("username", "ftpupload.properties");
+//		final String password = PropertiesLoad.getPValue("password", "ftpupload.properties");
+//		final String remotePathA = PropertiesLoad.getPValue("remotePathA", "ftpupload.properties");
+//		final String remotePathD = PropertiesLoad.getPValue("remotePathD", "ftpupload.properties");
+//		final String localpath = PropertiesLoad.getPValue("localpath", "ftpupload.properties");
+//		if(cphm != null && car !=null){
+//			json = "{'type':'"+type+"','hphm':'"+cphm+"','hpzl':'"+car+"'}";
+//		}
+//		if(StringUtils.isNotBlank(cphm)){
+//			fileName = "query"+Md5.getMd5(cphm) +".txt";
+//		}
+//		
+//		InputStream input = null;
+//		try {
+//			input = new ByteArrayInputStream(json.getBytes("utf-8"));
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		} 
+//		//上传到FTP
+//        boolean flag = Ftpfile.uploadFile(ip, port, username, password, remotePathA, fileName, input); 
+//        
+//      //===============================读取返回的文件====================================
+//        long time = System.currentTimeMillis();
+//        if(flag){
+//        	boolean a = false;
+//        	while(!a){
+//        		//校检文件是否存在在下载返回结果文件到本地
+//        		boolean b = Ftpfile.isFile(ip, port, username, password, remotePathD, "result"+Md5.getMd5(cphm)+".txt");
+//                	if(b){
+//                		Ftpfile.downFile(ip, port, username, password, remotePathA, "result"+Md5.getMd5(cphm)+".txt", localpath);
+//                		File file = new File(localpath+"result"+Md5.getMd5(cphm)+".txt");
+//                		String resultText =  Txtfile.readTxtFile(file);
+//                		request.getSession().setAttribute("result", resultText);//返回的查询结果
+//                		System.out.println("---------------------"+resultText);
+//                		a = true;
+//                	}else{
+//                		a =	false;	
+//                	}
+//                	long time1 = System.currentTimeMillis();
+//					if(time1-time > 130000){
+//                		a = true;
+//                	}
+//        		System.out.println("正在下载"+a);
+//        		
+//        		if(a) break;
+//        	}
+//
+//        }else{
+//        	System.out.println("获取文档出现错误");
+//        }
+//        
+//		return CLWZDATA;
+//	}
+//	
+//	/**
+//	 * 执行车辆信息查询业务
+//	*/
+//	@RequestMapping(value = "/clData", method = { RequestMethod.GET,
+//			RequestMethod.POST })
+//	public Object clData(HttpServletRequest request, HttpServletResponse response,String cphm,String car,String type){
+//		System.out.println("------"+cphm);
+//		System.out.println("------"+car);
+//		System.out.println("------"+type);
+//		String json = "";
+//		String fileName = "";
+//		final String ip = PropertiesLoad.getPValue("ip", "ftpupload.properties");
+//		final int port = Integer.parseInt(PropertiesLoad.getPValue("port", "ftpupload.properties"));
+//		final String username = PropertiesLoad.getPValue("username", "ftpupload.properties");
+//		final String password = PropertiesLoad.getPValue("password", "ftpupload.properties");
+//		final String remotePathA = PropertiesLoad.getPValue("remotePathA", "ftpupload.properties");
+//		final String remotePathD = PropertiesLoad.getPValue("remotePathD", "ftpupload.properties");
+//		final String localpath = PropertiesLoad.getPValue("localpath", "ftpupload.properties");
+//		if(cphm != null && car !=null){
+//			json = "{'type':'"+type+"','hphm':'"+cphm+"','hpzl':'"+car+"'}";
+//		}
+//		if(StringUtils.isNotBlank(cphm)){
+//			fileName = "query"+Md5.getMd5(cphm) +".txt";
+//		}
+//		InputStream input = null;
+//		try {
+//			input = new ByteArrayInputStream(json.getBytes("utf-8"));
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		} 
+//		//上传到FTP
+//        boolean flag = Ftpfile.uploadFile(ip, port, username, password, remotePathA, fileName, input); 
+//        
+//      //===============================读取返回的文件====================================
+//        long time = System.currentTimeMillis();
+//        if(flag){
+//        	boolean a = false;
+//        	while(!a){
+//        		//校检文件是否存在在下载返回结果文件到本地
+//        		boolean b = Ftpfile.isFile(ip, port, username, password, remotePathD, "result"+Md5.getMd5(cphm)+".txt");
+//                	if(b){
+//                		Ftpfile.downFile(ip, port, username, password, remotePathA, "result"+Md5.getMd5(cphm)+".txt", localpath);
+//                		File file = new File(localpath+"result"+Md5.getMd5(cphm)+".txt");
+//                		String resultText =  Txtfile.readTxtFile(file);
+//                		request.getSession().setAttribute("result", resultText);//返回的查询结果
+//                		System.out.println("---------------------"+resultText);
+//                		a = true;
+//                	}else{
+//                		a =	false;	
+//                	}
+//                	long time1 = System.currentTimeMillis();
+//					if(time1-time > 130000){
+//                		a = true;
+//                	}
+//        		System.out.println("正在下载"+a);
+//        		
+//        		if(a) break;
+//        	}
+//
+//        }else{
+//        	System.out.println("获取文档出现错误");
+//        }
+//        
+//		return CLDATA;
+//	}
+//	
+//	/**
+//	 * 驾驶员查询业务
+//	*/
+//	@RequestMapping(value = "/drvData", method = { RequestMethod.GET,
+//			RequestMethod.POST })
+//	public Object drvData(HttpServletRequest request, HttpServletResponse response,String sfzhm,String type){
+//		String json = "";
+//		String fileName = "";
+//		final String ip = PropertiesLoad.getPValue("ip", "ftpupload.properties");
+//		final int port = Integer.parseInt(PropertiesLoad.getPValue("port", "ftpupload.properties"));
+//		final String username = PropertiesLoad.getPValue("username", "ftpupload.properties");
+//		final String password = PropertiesLoad.getPValue("password", "ftpupload.properties");
+//		final String remotePathA = PropertiesLoad.getPValue("remotePathA", "ftpupload.properties");
+//		final String remotePathD = PropertiesLoad.getPValue("remotePathD", "ftpupload.properties");
+//		final String localpath = PropertiesLoad.getPValue("localpath", "ftpupload.properties");
+//		if(sfzhm != null){
+//			json = "{'type':'"+type+"','sfzhm':'"+sfzhm+"'}";
+//		}
+//		if(StringUtils.isNotBlank(sfzhm)){
+//			fileName = "query"+Md5.getMd5(sfzhm) +".txt";
+//		}
+//		InputStream input = null;
+//		try {
+//			input = new ByteArrayInputStream(json.getBytes("utf-8"));
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		} 
+//		//上传到FTP
+//        boolean flag = Ftpfile.uploadFile(ip, port, username, password, remotePathA, fileName, input); 
+//        
+//      //===============================读取返回的文件====================================
+//        long time = System.currentTimeMillis();
+//        if(flag){
+//        	boolean a = false;
+//        	while(!a){
+//        		//校检文件是否存在在下载返回结果文件到本地
+//        		boolean b = Ftpfile.isFile(ip, port, username, password, remotePathD, "result"+Md5.getMd5(sfzhm)+".txt");
+//                	if(b){
+//                		Ftpfile.downFile(ip, port, username, password, remotePathA, "result"+Md5.getMd5(sfzhm)+".txt", localpath);
+//                		File file = new File(localpath+"result"+Md5.getMd5(sfzhm)+".txt");
+//                		String resultText =  Txtfile.readTxtFile(file);
+//                		request.getSession().setAttribute("result", resultText);//返回的查询结果
+//                		System.out.println("---------------------"+resultText);
+//                		a = true;
+//                	}else{
+//                		a =	false;	
+//                	}
+//                	long time1 = System.currentTimeMillis();
+//					if(time1-time > 130000){
+//                		a = true;
+//                	}
+//        		System.out.println("正在下载"+a);
+//        		
+//        		if(a) break;
+//        	}
+//
+//        }else{
+//        	System.out.println("获取文档出现错误");
+//        }
+//        
+//		return DRVDATA;
+//	}
+//	
+//	
+//	/**
+//	 * 跳转到微信车辆违章查询页面
+//	 * 
+//	*/
+//	@RequestMapping(value = "/test", method = { RequestMethod.GET,
+//			RequestMethod.POST })
+//	public Object test(HttpServletRequest request, HttpServletResponse response){
+//		
+//		return TEST;
+//	}
 
 }
