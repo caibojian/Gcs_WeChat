@@ -21,6 +21,7 @@ import javax.validation.Validator;
 
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.cp.api.WxCpService;
+import me.chanjar.weixin.cp.bean.WxCpChatXmlMessage;
 import me.chanjar.weixin.cp.bean.WxCpXmlMessage;
 import me.chanjar.weixin.cp.util.crypto.WxCpCryptUtil;
 
@@ -141,6 +142,48 @@ public class WeChatController {
 	    }
 
 	    return;
+	}
+	
+	/**
+	 * 微信会话接口回调验证
+	 * @param info
+	 * @param files
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	*/
+	@RequestMapping(value = "/weChatChatcore", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String weChatChatcore(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		WxCpService wxCpService = CpUtils2.getWxCpService();
+		
+		response.setContentType("text/html;charset=utf-8");
+	    response.setStatus(HttpServletResponse.SC_OK);
+
+	    String msgSignature = request.getParameter("msg_signature");
+	    String nonce = request.getParameter("nonce");
+	    String timestamp = request.getParameter("timestamp");
+	    String echostr = request.getParameter("echostr");
+	    
+	    if (StringUtils.isNotBlank(echostr)) {
+	      if (!wxCpService.checkSignature(msgSignature, timestamp, nonce, echostr)) {
+	        // 消息签名不正确，说明不是公众平台发过来的消息
+	        response.getWriter().println("非法请求");
+	        return null;
+	      }
+	      WxCpCryptUtil cryptUtil = new WxCpCryptUtil(CpUtils2.getWxCpConfigStorage());
+	      String plainText = cryptUtil.decrypt(echostr);
+	      // 说明是一个仅仅用来验证的请求，回显echostr
+	      response.getWriter().println(plainText);
+	      return null;
+	    }
+
+	    WxCpChatXmlMessage inMessage = WxCpChatXmlMessage
+	        .fromEncryptedXml(request.getInputStream(), CpUtils2.getWxCpConfigStorage(), timestamp, nonce, msgSignature);
+	    System.out.println("微信会话消息:"+inMessage);
+
+	    System.out.println(inMessage.getPackageId());
+	    return inMessage.getPackageId();
 	}
 	//------------------------------------微信交管快讯--------------------------------------------------------------
 	/**

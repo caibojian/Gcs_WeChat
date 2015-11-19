@@ -108,7 +108,9 @@ public class UserServiceImpl implements UserService {
 		if (StringUtils.isNotBlank(user.getPlainPassword()) && shiroRealm != null) {
 			HashPassword hashPassword = shiroRealm.encrypt(user.getPlainPassword());
 			user.setSalt(hashPassword.salt);
+			//密码加密
 			user.setPassword(hashPassword.password);
+//			user.setPassword(user.getPlainPassword());
 		}
 		
 		userDAO.save(user);

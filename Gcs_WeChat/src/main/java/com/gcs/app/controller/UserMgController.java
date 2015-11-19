@@ -483,8 +483,11 @@ public class UserMgController {
 		}
 		if(flig){
 			try {
+				System.out.println("======1=====");
 				Map<String, List<List<Cell>>> oa = ExcelUtil.getExcelData(title_img_file.getInputStream(), 1);
+				System.out.println("======2=====");
 				List<List<Cell>> oaUserList = oa.get("人员信息");
+				System.out.println(oaUserList);
 				List<List<String>> volist = new ArrayList<List<String>>();
 				for (int i = 1; i < oaUserList.size(); i++) {
 					List<Cell> cells = oaUserList.get(i);
@@ -492,20 +495,61 @@ public class UserMgController {
 					try {
 						vo.add(cells.get(2).getStringCellValue().trim());
 					} catch (Exception e) {
-						BigDecimal db = new BigDecimal(cells.get(2).toString());
-						String ii = db.toPlainString();
-						vo.add(ii);
+						if(cells.get(2)!=null){
+							BigDecimal db = new BigDecimal(cells.get(2).toString());
+							String ii = db.toPlainString();
+							vo.add(ii);
+						}else{
+							vo.add(null);
+						}
 					}
-					vo.add(cells.get(3).getStringCellValue().trim());
+					try {
+						vo.add(cells.get(3).getStringCellValue().trim());
+					} catch (Exception e) {
+						if(cells.get(3)!=null){
+							BigDecimal db = new BigDecimal(cells.get(3).toString());
+							String ii = db.toPlainString();
+							vo.add(ii);
+						}else{
+							vo.add(null);
+						}
+					}
+					
 					try {
 						vo.add(cells.get(4).getStringCellValue().trim());
 					} catch (Exception e) {
-						BigDecimal db = new BigDecimal(cells.get(4).toString());
-						String ii = db.toPlainString();
-						vo.add(ii);
+						if(cells.get(4)!=null){
+							BigDecimal db = new BigDecimal(cells.get(4).toString());
+							String ii = db.toPlainString();
+							vo.add(ii);
+						}else{
+							vo.add(null);
+						}
 					}
-					vo.add(cells.get(5).getStringCellValue().trim());
-					vo.add(cells.get(6).getStringCellValue().trim());
+					try {
+						vo.add(cells.get(5).getStringCellValue().trim());
+					} catch (Exception e) {
+						if(cells.get(5)!=null){
+							BigDecimal db = new BigDecimal(cells.get(5).toString());
+							String ii = db.toPlainString();
+							vo.add(ii);
+						}else{
+							vo.add(null);
+						}
+					}
+					
+					try {
+						vo.add(cells.get(6).getStringCellValue().trim());
+					} catch (Exception e) {
+						if(cells.get(6)!=null){
+							BigDecimal db = new BigDecimal(cells.get(6).toString());
+							String ii = db.toPlainString();
+							vo.add(ii);
+						}else{
+							vo.add(null);
+						}
+						
+					}
 					volist.add(vo);
 				}
 				List<WechatUser> users = userMgService.getUserListByOrg(session);

@@ -265,16 +265,20 @@ public class ExcelUtil {
 			String sheetName = sheet.getSheetName(); // 得到的表名称
 			if (sheet != null) {
 				rowList = new ArrayList<List<Cell>>();
-				for (int j = 0; j <= sheet.getLastRowNum(); j++) { // 循环遍历sheet
-					Row row = sheet.getRow(j); // 获取行
-					cellList = new ArrayList<Cell>();
-					for (int k = 0; k < row.getLastCellNum(); k++) {
-						Cell cell = row.getCell(k); // 获取每一个单元格中的值
-						cellList.add(cell);
+				try {
+					for (int j = 0; j <= sheet.getLastRowNum(); j++) { // 循环遍历sheet
+						Row row = sheet.getRow(j); // 获取行
+						cellList = new ArrayList<Cell>();
+						for (int k = 0; k < row.getLastCellNum(); k++) {
+							Cell cell = row.getCell(k); // 获取每一个单元格中的值
+							cellList.add(cell);
+						}
+						rowList.add(cellList);
 					}
-					rowList.add(cellList);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				System.out.println(rowList);
+				System.out.println("数据："+rowList);
 			}
 			map.put(sheetName, rowList);
 		}

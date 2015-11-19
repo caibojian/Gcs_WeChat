@@ -122,7 +122,7 @@ public class WxCpXmlMessage implements Serializable {
   @XStreamAlias("Recognition")
   @XStreamConverter(value=XStreamCDataConverter.class)
   private String recognition;
-
+  
   ///////////////////////////////////////
   // 群发消息返回的结果
   ///////////////////////////////////////
@@ -216,15 +216,17 @@ public class WxCpXmlMessage implements Serializable {
    *
    * @param msgType
    */
+  
+  
+  
   public void setMsgType(String msgType) {
     this.msgType = msgType;
   }
-
   public String getContent() {
     return content;
   }
 
-  public void setContent(String content) {
+public void setContent(String content) {
     this.content = content;
   }
 

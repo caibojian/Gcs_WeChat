@@ -202,11 +202,12 @@ public class CpUtils {
 		departids[0] = Integer.parseInt(user.getDepartment());
 		cpuser.setDepartIds(departids);
 		cpuser.setEmail(user.getEmail());
-		
-		if(user.getMjxb()==0){
-			gender = "男";
-		}else if(user.getMjxb()==1){
-			gender = "女";
+		if(user.getMjxb()!=null){
+			if(user.getMjxb()==0){
+				gender = "男";
+			}else if(user.getMjxb()==1){
+				gender = "女";
+			}
 		}
 		
 		cpuser.setGender(gender);

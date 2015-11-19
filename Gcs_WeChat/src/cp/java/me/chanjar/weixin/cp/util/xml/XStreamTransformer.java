@@ -45,6 +45,8 @@ public class XStreamTransformer {
   private static Map<Class, XStream> configXStreamInstance() {
     Map<Class, XStream> map = new HashMap<Class, XStream>();
     map.put(WxCpXmlMessage.class, config_WxCpXmlMessage());
+    //消息服务接口
+    map.put(WxCpChatXmlMessage.class, config_WxCpChatXmlMessage());
     map.put(WxCpXmlOutNewsMessage.class, config_WxCpXmlOutNewsMessage());
     map.put(WxCpXmlOutTextMessage.class, config_WxCpXmlOutTextMessage());
     map.put(WxCpXmlOutImageMessage.class, config_WxCpXmlOutImageMessage());
@@ -62,6 +64,12 @@ public class XStreamTransformer {
     xstream.processAnnotations(WxCpXmlMessage.SendLocationInfo.class);
     return xstream;
   }
+  //消息服务接口
+  private static XStream config_WxCpChatXmlMessage() {
+	    XStream xstream = XStreamInitializer.getInstance();
+	    xstream.processAnnotations(WxCpChatXmlMessage.class);
+	    return xstream;
+	  }
 
   private static XStream config_WxCpXmlOutImageMessage() {
     XStream xstream = XStreamInitializer.getInstance();

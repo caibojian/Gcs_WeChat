@@ -113,7 +113,7 @@ public class UserController {
 	@RequiresPermissions("User:edit")
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public @ResponseBody String update(@ModelAttribute("preloadUser")User user) {
-		BeanValidators.validateWithException(validator, user);
+		//BeanValidators.validateWithException(validator, user);
 		userService.update(user);
 		
 		LogUitl.putArgs(LogMessageObject.newWrite().setObjects(new Object[]{user.getUsername()}));
