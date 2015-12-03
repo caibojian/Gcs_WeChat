@@ -94,6 +94,9 @@ public class WeChatController {
 	private static final String TEST = "management/app/queryCLXX/clwzxx";
 	
 	
+	private static final String FILEINDEX = "management/app/test/fileIndex";
+	
+	
 	/**
 	 * 微信回调验证
 	 * @param info
@@ -816,5 +819,14 @@ public class WeChatController {
 //		
 //		return TEST;
 //	}
+	
+	
+	/**
+	 * 微信应用tag列表
+	*/
+	@RequestMapping(value = "/fileIndex", method = { RequestMethod.GET,RequestMethod.POST })
+	public String fileIndex(){
+	    return FILEINDEX;
+	}
 
 }
