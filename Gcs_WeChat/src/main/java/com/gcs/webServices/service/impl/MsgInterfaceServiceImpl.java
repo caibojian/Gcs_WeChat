@@ -2,8 +2,12 @@ package com.gcs.webServices.service.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.gcs.utils.PropertiesLoad;
 import com.gcs.utils.StringUtils;
@@ -15,6 +19,7 @@ import com.gcs.webServices.service.MsgInterfaceService;
 import com.gcs.webServices.util.JSONUtil;
 import com.gcs.webServices.util.ReturnString;
 import com.gcs.weixin.dbc.DatabaseConnection_2;
+import com.gcs.weixin.vo.Location;
 
 public class MsgInterfaceServiceImpl implements MsgInterfaceService {
 
@@ -36,11 +41,32 @@ public class MsgInterfaceServiceImpl implements MsgInterfaceService {
 	 */
 	@Override
 	public String sendMessage(String content, String token, String action) {
+		//存放发送结果是的集合合
+		List<Map<String, String>> resultList = new ArrayList<Map<String,String>>();
+				
 		MsgBean msgBean = new MsgBean();
 		msgBean = JSONUtil.JSONToBean(content);
-		System.out.println(msgBean.toString());
-		boolean isSave = saveRequest(msgBean, content, token, action);
-		if(isSave){
+		msgBean = saveRequest(msgBean, content, token, action);
+		if(msgBean != null){
+			String[] userAlarmIds = msgBean.getTosuer().split("\\|");
+			
+			List<Map<String, String>> list = null;
+			try {
+				list = findUserId(userAlarmIds);
+				String toUser = "";
+				for (int i = 0; i < list.size(); i++) {
+					toUser = toUser + "|" + list.get(i).get("userid");
+				}
+				System.out.println(toUser);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			//返回结果处理
+			for (int i = 0; i < userAlarmIds.length; i++) {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("policeid", userAlarmIds[i]);
+			}
 			return ReturnString.SUCCESS;
 		}else{
 			return ReturnString.ERROR;
@@ -51,7 +77,7 @@ public class MsgInterfaceServiceImpl implements MsgInterfaceService {
 	 * 保存请求数据
 	 */
 	@Override
-	public boolean saveRequest(MsgBean msgBean,String content, String token, String action) {
+	public MsgBean saveRequest(MsgBean msgBean,String content, String token, String action) {
 		boolean flag = false;
 		String msgbeanid = StringUtils.getGuid();
 		String sql = "INSERT INTO wechat_msgservice_request(agentid,toparty,tosuer,action,content,token,msgbeanid)VALUES(?,?,?,?,?,?,?)";
@@ -69,6 +95,7 @@ public class MsgInterfaceServiceImpl implements MsgInterfaceService {
 				if(msglist.size()>0){
 					for (int i = 0; i < msglist.size(); i++) {
 						String msgid = StringUtils.getGuid();
+						msglist.get(i).setUrl(msgid);
 						String sql1 = "INSERT INTO wechat_msgbean_msg(content,description,pic_url,title,msgbeanid,msgid)VALUES (?, ?, ?, ?, ?, ?)";
 						this.pstmt = this.conn.prepareStatement(sql1);
 						this.pstmt.setString(1, msglist.get(i).getContent());
@@ -104,10 +131,40 @@ public class MsgInterfaceServiceImpl implements MsgInterfaceService {
 			this.pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return flag;
+			return null;
 		}
 		System.out.println(flag);
-		return flag;
+		if(flag){
+			return msgBean;
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public List<Map<String, String>> findUserId(String[] alarmId) throws SQLException {
+		List<Map<String, String>> list = new ArrayList<Map<String,String>>();
+		String sql = "select userid,policeid from wechat_user ";
+		StringBuffer sqlBuffer = new StringBuffer();
+		if(alarmId.length>0){
+			sqlBuffer.append(" where policeid='"+alarmId[0]+"'");
+			for (int i = 0; i < alarmId.length; i++) {
+				sqlBuffer.append(" or policeid='"+alarmId[i]+"'");
+			}
+		}
+		sql = sql +	sqlBuffer;
+		this.pstmt = this.conn.prepareStatement(sql);
+//		this.pstmt.setString(1, "00");
+		
+		ResultSet rs = this.pstmt.executeQuery();
+		while (rs.next()) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("userid", rs.getString(1));
+			map.put("peliceid", rs.getString(2));
+			list.add(map);
+		}
+		this.pstmt.close();
+		return list;
 	}
 
 }

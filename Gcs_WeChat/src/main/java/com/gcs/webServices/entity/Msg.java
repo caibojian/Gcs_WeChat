@@ -2,7 +2,6 @@ package com.gcs.webServices.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,9 +24,19 @@ public class Msg {
     private String description;
     private String content;
     private String picUrl;
+    
     @Transient
     private List<File> file;
+    @Transient
+    private String url;
     
+    
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public Long getId() {
 		return id;
 	}
