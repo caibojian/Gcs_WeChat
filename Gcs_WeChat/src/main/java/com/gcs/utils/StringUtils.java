@@ -17,18 +17,20 @@ public class StringUtils {
 	
 
     public static void main(String[] args) { 
-        String[] strArr = new String[] { "www.micmiu.com", "!@#$%^&*()_+{}[]|\"'?/:;<>,.", "！￥……（）——：；“”‘'《》，。？、", "sss不s要s啊aa", "やめて", "韩佳人", "???" }; 
-        for (String str : strArr) { 
-            System.out.println("===========> 测试字符串：" + str); 
-            System.out.println("正则判断结果：" + isChineseByREG(str) + " -- " + isChineseByName(str)); 
-            System.out.println("Unicode判断结果 ：" + isChinese(str)); 
-            System.out.println("详细判断列表："); 
-            char[] ch = str.toCharArray(); 
-            for (int i = 0; i < ch.length; i++) { 
-                char c = ch[i]; 
-                System.out.println(c + " --> " + (isChinese(c) ? "是" : "否")); 
-            } 
-        } 
+//        String[] strArr = new String[] { "www.micmiu.com", "!@#$%^&*()_+{}[]|\"'?/:;<>,.", "！￥……（）——：；“”‘'《》，。？、", "sss不s要s啊aa", "やめて", "韩佳人", "???" }; 
+//        for (String str : strArr) { 
+//            System.out.println("===========> 测试字符串：" + str); 
+//            System.out.println("正则判断结果：" + isChineseByREG(str) + " -- " + isChineseByName(str)); 
+//            System.out.println("Unicode判断结果 ：" + isChinese(str)); 
+//            System.out.println("详细判断列表："); 
+//            char[] ch = str.toCharArray(); 
+//            for (int i = 0; i < ch.length; i++) { 
+//                char c = ch[i]; 
+//                System.out.println(c + " --> " + (isChinese(c) ? "是" : "否")); 
+//            } 
+//        } 
+    	
+    	System.out.println(StringUtils.isEmpty("ss")||StringUtils.isEmpty("ss")||StringUtils.isEmpty("s"));
     }
     
 
@@ -301,6 +303,12 @@ public class StringUtils {
 				}
 			}
 		return userAndOrg.toString();
+	}
+	
+	public static boolean isEmpty(String str){
+		boolean bl = false;
+		bl = (str == null || str.trim().length() <= 0);
+		return bl;
 	}
 	
 }

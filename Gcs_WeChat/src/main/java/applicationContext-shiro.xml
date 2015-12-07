@@ -41,7 +41,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/management/wechat/** = anon
-				/FaultFacilityWebServicePort = anon
+				/MsgServicePort/** = anon
 				/WeChatVoiceServlet = anon
 				/JSSDKServlet = anon
 				/baiduMap.jsp = anon

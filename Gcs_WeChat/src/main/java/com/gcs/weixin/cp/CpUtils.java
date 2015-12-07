@@ -363,4 +363,28 @@ public class CpUtils {
 		System.out.println(user.getAvatar());
 	}
 	
+	public static String interfaceSendMsg(String agentId,String toUser,String toParty,String url){
+		WxCpMessage.WxArticle article1 = new WxCpMessage.WxArticle();
+		article1.setUrl("URL");
+		article1.setPicUrl("");
+		article1.setDescription("Is Really A Happy Day");
+		article1.setTitle("Happy Day");
+
+
+		WxCpMessage message = WxCpMessage.NEWS()
+		  .agentId(agentId) // 企业号应用ID
+		  .toUser(toUser)
+		  .toParty(toParty)
+		  .addArticle(article1)
+		  .build();
+		
+		try {
+			wxCpService.messageSend(message);
+		} catch (WxErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }
