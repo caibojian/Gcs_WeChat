@@ -18,6 +18,7 @@ import com.gcs.webServices.service.MsgBeanService;
 import com.gcs.webServices.service.MsgInterfaceService;
 import com.gcs.webServices.util.JSONUtil;
 import com.gcs.webServices.util.ReturnString;
+import com.gcs.weixin.cp.CpUtils;
 import com.gcs.weixin.dbc.DatabaseConnection_2;
 import com.gcs.weixin.vo.Location;
 
@@ -57,6 +58,7 @@ public class MsgInterfaceServiceImpl implements MsgInterfaceService {
 				for (int i = 0; i < list.size(); i++) {
 					toUser = toUser + "|" + list.get(i).get("userid");
 				}
+				String result = CpUtils.interfaceSendMsg(msgBean.getAgentid(), toUser, null, null, msgBean);
 				System.out.println(toUser);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -95,7 +97,7 @@ public class MsgInterfaceServiceImpl implements MsgInterfaceService {
 				if(msglist.size()>0){
 					for (int i = 0; i < msglist.size(); i++) {
 						String msgid = StringUtils.getGuid();
-						msglist.get(i).setUrl(msgid);
+						msglist.get(i).setUrl("http://caibojian.xicp.net:26310/Gcs_WeChat/management/wechat/msgIndex?msgid="+msgid);
 						String sql1 = "INSERT INTO wechat_msgbean_msg(content,description,pic_url,title,msgbeanid,msgid)VALUES (?, ?, ?, ?, ?, ?)";
 						this.pstmt = this.conn.prepareStatement(sql1);
 						this.pstmt.setString(1, msglist.get(i).getContent());

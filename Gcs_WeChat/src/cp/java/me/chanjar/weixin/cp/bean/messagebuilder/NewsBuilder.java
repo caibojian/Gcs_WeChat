@@ -27,6 +27,11 @@ public final class NewsBuilder extends BaseBuilder<NewsBuilder> {
     this.articles.add(article);
     return this;
   }
+  
+  public NewsBuilder addArticle(List<WxCpMessage.WxArticle> article) {
+	    this.articles = article;
+	    return this;
+	  }
 
   public WxCpMessage build() {
     WxCpMessage m = super.build();

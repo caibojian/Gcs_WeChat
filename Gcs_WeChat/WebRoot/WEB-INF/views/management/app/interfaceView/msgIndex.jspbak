@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/include.inc.jsp"%>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="${contextPath}/resources/zui/css/zui.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/resources/zui/demo/demo.css">
+<script src="${contextPath}/resources/zui/lib/jquery/jquery.js"></script>
+<script src="${contextPath}/resources/zui/js/zui.js"></script>
+<title></title>
+</head>
+
+<body>
+<header class="ui-header ui-header-positive ui-border-b">
+   <h1>消息内容</h1>
+</header>
+<section class="ui-container">
+     
+    <section>
+      <article>
+        <div contenteditable="true" spellcheck="false" class="example">
+          <br>
+         
+          <article class="article">
+            <header>
+              <h1 class="text-center">${msg.title }</h1>
+              <dl class="dl-inline">
+                <dt>发送时间：</dt>
+                <dd>${msgBean.createTime }</dd>
+                <dt>作者：</dt>
+                <dd>${msgBean.token }</dd>
+                <dt>
+                </dt>
+              </dl>
+              <section class="abstract">
+                <p><strong>摘要：${msg.description }</strong></p>
+              </section>
+            </header>
+            <section class="article-content">
+             <p><h4>${msg.content }</h4></p>
+            </section>
+            <footer>
+              <p class="pull-right text-muted">
+              </p>
+             
+            </footer>
+          </article>
+        </div>
+      </article>
+    </section>
+</section>
+</body>
+</html>

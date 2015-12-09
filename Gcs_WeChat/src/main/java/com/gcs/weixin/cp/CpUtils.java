@@ -365,22 +365,28 @@ public class CpUtils {
 	}
 	
 	public static String interfaceSendMsg(String agentId,String toUser,String toParty,String url,MsgBean msgBean){
-		WxCpMessage.WxArticle article1 = new WxCpMessage.WxArticle();
-		article1.setUrl("URL");
-		article1.setPicUrl("");
-		article1.setDescription("Is Really A Happy Day");
-		article1.setTitle("Happy Day");
-
+		List<WxCpMessage.WxArticle> articleList = new ArrayList<WxCpMessage.WxArticle>();
+		if(msgBean != null){
+			for (int i = 0; i < msgBean.getMsg().size(); i++) {
+				WxCpMessage.WxArticle article1 = new WxCpMessage.WxArticle();
+				article1.setUrl(msgBean.getMsg().get(i).getUrl());
+				article1.setPicUrl(msgBean.getMsg().get(i).getPicUrl());
+				article1.setDescription(msgBean.getMsg().get(i).getDescription());
+				article1.setTitle(msgBean.getMsg().get(i).getTitle());
+				articleList.add(article1);
+			}
+		}
 		WxCpMessage message = WxCpMessage.NEWS()
 		  .agentId(agentId) // 企业号应用ID
 		  .toUser(toUser)
 		  .toParty(toParty)
-		  .addArticle(article1)
+		  .addArticle(articleList)
 		  .build();
 		try {
 			wxCpService.messageSend(message);
 		} catch (WxErrorException e) {
-			// TODO Auto-generated catch block
+			String msg = e.getMessage();
+			System.out.println(msg);
 			e.printStackTrace();
 		}
 		return null;

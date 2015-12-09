@@ -49,6 +49,11 @@ import com.gcs.sysmgr.vo.TableReturnJson;
 import com.gcs.utils.HttpUtils;
 import com.gcs.utils.IDUtil;
 import com.gcs.utils.PropertiesLoad;
+import com.gcs.webServices.entity.Msg;
+import com.gcs.webServices.entity.MsgBean;
+import com.gcs.webServices.service.FileService;
+import com.gcs.webServices.service.MsgBeanService;
+import com.gcs.webServices.service.MsgService;
 import com.gcs.weixin.cp.CpUtils;
 import com.gcs.weixin.cp.CpUtils2;
 import com.gcs.weixin.service.WechatLocationDAO;
@@ -73,6 +78,15 @@ public class WeChatController {
 	WechatArticleReaderService articleReaderService;
 	@Autowired
 	WechatMessageAndEventService msgService ;
+	
+	//通用消息发送借口
+	@Autowired
+	MsgBeanService msgBeanService;
+	@Autowired
+	MsgService msgsService;
+	@Autowired
+	FileService fileService;
+	
 	@Autowired
 	private Validator validator;
 	
@@ -95,6 +109,9 @@ public class WeChatController {
 	
 	
 	private static final String FILEINDEX = "management/app/test/fileIndex";
+	
+	//通用消息借口消息查看页面
+	private static final String MSGINDEX = "management/app/interfaceView/msgIndex";
 	
 	
 	/**
@@ -828,5 +845,38 @@ public class WeChatController {
 	public String fileIndex(){
 	    return FILEINDEX;
 	}
+	
+	
+	/**
+	 * 文章内容显示
+	*/
+	@RequestMapping(value = "/msgIndex", method = { RequestMethod.GET,RequestMethod.POST })
+	public String msgIndex(String msgid, HttpServletRequest request){
+		Msg msg = new Msg();
+		MsgBean msgBean = new MsgBean();
+		List<com.gcs.webServices.entity.File> fileList = new ArrayList<com.gcs.webServices.entity.File>();
+		
+		List<Msg> msgList = msgsService.queryByProperty("msgid", msgid);
+		if(msgList.size()>0){
+			msg = msgList.get(0);
+		}
+		
+		List<MsgBean> msgBeanList = msgBeanService.queryByProperty("msgbeanid", msg.getMsgbeanid());
+		if(msgBeanList.size()>0){
+			msgBean = msgBeanList.get(0);
+		}
+		
+		fileList = fileService.queryByProperty("msgid", msg.getMsgid());
+		
+		System.out.println(msgList.size());
+		System.out.println(msgBeanList.size());
+		System.out.println(fileList.size());
+		request.setAttribute("msg", msg);
+		request.setAttribute("msgBean", msgBean);
+		request.setAttribute("fileList", fileList);
+	    return MSGINDEX;
+	}
+	
+	
 
 }
