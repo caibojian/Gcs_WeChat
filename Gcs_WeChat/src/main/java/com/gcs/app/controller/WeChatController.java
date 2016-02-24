@@ -24,6 +24,9 @@ import me.chanjar.weixin.cp.api.WxCpService;
 import me.chanjar.weixin.cp.bean.WxCpChatXmlMessage;
 import me.chanjar.weixin.cp.bean.WxCpXmlMessage;
 import me.chanjar.weixin.cp.util.crypto.WxCpCryptUtil;
+import me.chanjar.weixin.mp.api.WxMpService;
+import me.chanjar.weixin.mp.bean.WxMpXmlMessage;
+import me.chanjar.weixin.mp.bean.WxMpXmlOutMessage;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +59,7 @@ import com.gcs.webServices.service.MsgBeanService;
 import com.gcs.webServices.service.MsgService;
 import com.gcs.weixin.cp.CpUtils;
 import com.gcs.weixin.cp.CpUtils2;
+import com.gcs.weixin.mp.MpUtils;
 import com.gcs.weixin.service.WechatLocationDAO;
 import com.gcs.weixin.service.impl.WechatLocationDAOImpl;
 import com.gcs.weixin.vo.Location;
@@ -115,7 +119,7 @@ public class WeChatController {
 	
 	
 	/**
-	 * 微信回调验证
+	 * 微信企业号回调验证
 	 * @param info
 	 * @param files
 	 * @param request
@@ -159,6 +163,69 @@ public class WeChatController {
 	    }
 
 	    return;
+	}
+	
+	/**
+	 * 微信订阅号回调验证
+	 * @param info
+	 * @param files
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	*/
+	@RequestMapping(value = "/weChatMpcore", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public void weChatMpcore(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		WxCpService wxCpService = CpUtils2.getWxCpService();
+		WxMpService wxMpService = MpUtils.getWxMpService();
+		
+		
+		response.setContentType("text/html;charset=utf-8");
+	    response.setStatus(HttpServletResponse.SC_OK);
+
+	    String signature = request.getParameter("signature");
+	    String nonce = request.getParameter("nonce");
+	    String timestamp = request.getParameter("timestamp");
+
+	    if (!wxMpService.checkSignature(timestamp, nonce, signature)) {
+	      // 消息签名不正确，说明不是公众平台发过来的消息
+	      response.getWriter().println("非法请求");
+	      return;
+	    }
+
+	    String echostr = request.getParameter("echostr");
+	    if (StringUtils.isNotBlank(echostr)) {
+	      // 说明是一个仅仅用来验证的请求，回显echostr
+	      response.getWriter().println(echostr);
+	      return;
+	    }
+
+	    String encryptType = StringUtils.isBlank(request.getParameter("encrypt_type")) ?
+	        "raw" :
+	        request.getParameter("encrypt_type");
+
+	    if ("raw".equals(encryptType)) {
+	      // 明文传输的消息
+	      WxMpXmlMessage inMessage = WxMpXmlMessage.fromXml(request.getInputStream());
+	     // WxMpXmlOutMessage outMessage = wxMpMessageRouter.route(inMessage);
+	     // response.getWriter().write(outMessage.toXml());
+	      System.out.println("微信回调验证:"+inMessage);
+	      return;
+	    }
+
+	    if ("aes".equals(encryptType)) {
+	      // 是aes加密的消息
+	      String msgSignature = request.getParameter("msg_signature");
+	      WxMpXmlMessage inMessage = WxMpXmlMessage.fromEncryptedXml(request.getInputStream(), MpUtils.getWxMpConfigStorage(), timestamp, nonce, msgSignature);
+	     // WxMpXmlOutMessage outMessage = wxMpMessageRouter.route(inMessage);
+	     // response.getWriter().write(outMessage.toEncryptedXml(wxMpConfigStorage));
+	      System.out.println("微信回调验证:"+inMessage);
+	      return;
+	    }
+
+	    response.getWriter().println("不可识别的加密类型");
+	    return;
+
 	}
 	
 	/**

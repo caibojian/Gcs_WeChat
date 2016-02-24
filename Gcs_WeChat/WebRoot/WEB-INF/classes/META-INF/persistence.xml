@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+    
+	<persistence-unit name="WECHAT"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.gcs.app.entity.WechatTask</class>
+		
+		<class>com.gcs.business.entity.YwHsdw</class>
+		<class>com.gcs.business.entity.YwHyxx</class>
+		<class>com.gcs.business.entity.Sjzd</class>
+		<class>com.gcs.business.entity.CjwLxr</class>
+		<class>com.gcs.business.entity.YwSzylzzbYb</class>
+		<class>com.gcs.business.entity.CjwQsxmLxr</class>
+		<class>com.gcs.business.entity.WrWrzB</class>
+		<class>com.gcs.business.entity.WrAdmaB</class>
+		<class>com.gcs.business.entity.YwJdjbxx</class>
+		<class>com.gcs.business.entity.YwSzylzzbSlsd</class>
+		<class>com.gcs.business.entity.YwHsxx</class>
+		<class>com.gcs.business.entity.YwQsxkpfzbxx</class>
+		<class>com.gcs.business.entity.YwHychdw</class>
+		<class>com.gcs.business.entity.CjwQsxm</class>
+		<class>com.gcs.business.entity.SLocality</class>
+		<class>com.gcs.business.entity.CjwQysh</class>
+		<class>com.gcs.business.entity.YwFjxx</class>
+		<class>com.gcs.cw.szy.entity.Sjzd</class>
+		<class>com.gcs.cw.szy.entity.WrWrzB</class>
+		<class>com.gcs.cw.szy.entity.CjwQsxm</class>
+		<class>com.gcs.cw.szy.entity.WrAdmaB</class>
+		<class>com.gcs.cw.szy.entity.CjwQsxmLxr</class>
+		<class>com.gcs.cw.szy.entity.CjwLxr</class>
+		<class>com.gcs.cw.szy.entity.CjwQysh</class>
+		<class>com.gcs.cw.szy.entity.SLocality</class>
+		<class>com.gcs.cw.szy.entity.YwFjxx</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzHychdw</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzSzylzzbYb</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzHsdw</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzHyxx</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzJdjbxx</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzQsxkpfzbxx</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzHsxx</class>
+		<class>com.gcs.apps.szy.tz.zhtj.entity.TzSzylzzbSlsd</class>
+		<properties>
+			<property name="hibernate.connection.driver_class"
+				value="org.gjt.mm.mysql.Driver" />
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://localhost:3306/gcs_wechat" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password"
+				value="caidao" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

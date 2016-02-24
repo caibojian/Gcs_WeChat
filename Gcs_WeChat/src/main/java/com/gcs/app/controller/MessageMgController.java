@@ -711,6 +711,7 @@ public class MessageMgController {
 						fos.write(by);
 						flag = bis.read(by);
 					}
+					System.out.println(path);
 					mediaId = CpUtils.mediaMg(path);
 			} else {
 				JsonReturn jr = new JsonReturn(false, "上传图片不能为空");
@@ -878,6 +879,8 @@ public class MessageMgController {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 
+		System.out.println(wechatMessageSend.getToOrgs());
+		
 		User loginUser = (User) session.getAttribute(SecurityConstants.LOGIN_USER);
 		List<String> toOrgs_1 = Arrays.asList(wechatMessageSend.getToOrgs().split(","));
 		List<String> toOrgs = new ArrayList<String>(toOrgs_1);

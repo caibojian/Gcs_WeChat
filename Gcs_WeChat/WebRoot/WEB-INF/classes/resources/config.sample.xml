@@ -1,0 +1,13 @@
+<xml>
+    <corpId>wxd247efa871cf110b</corpId>
+    <corpSecret>Z5izaJswXuZKs6hBeQ3_909rVhNq_ahL_cr3jjIsm2VsVEPbzQH8Veoe_MsTmiuP</corpSecret>
+    <agentId>2</agentId>
+    <token>kw4uvgObpXu6DXHz59jW7J1DGYQTO</token>
+    <aesKey>JE1ONKs3llAncxR3Kma949JTWYAZja9KpjZ0OokBaQ9</aesKey>
+    <accessToken></accessToken>
+    <expiresTime></expiresTime>
+    <userId>40289f814c7d4c68014c7d53e30c0001</userId>
+    <departmentId>2</departmentId>
+    <tagId></tagId>
+    <oauth2redirectUri>www.baidu.com</oauth2redirectUri>
+</xml>

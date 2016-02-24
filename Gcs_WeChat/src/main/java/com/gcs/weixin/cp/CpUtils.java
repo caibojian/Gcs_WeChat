@@ -321,6 +321,7 @@ public class CpUtils {
 			articleList.add(article);
 		}
 		
+		
 		WxMpMessage mediaMessage = WxMpMessage.MPNEWS()
 	      .agentId(wechatMessageSend.getAgentId()) // 企业号应用ID
 	      .toUser(wechatMessageSend.getToUsers())
